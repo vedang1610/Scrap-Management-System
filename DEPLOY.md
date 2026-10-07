@@ -22,12 +22,16 @@ It takes about 20 minutes.
    (This file is only on your PC and the server, never on GitHub.)
 
 ## 4. Upload the files
-1. Control Panel > **Online File Manager** (or use FileZilla with the FTP details from *Account details*).
-2. Open the **htdocs** folder and delete the default `index2.html` if it is there.
-3. Upload **everything inside** the project folder into `htdocs`
-   (so `htdocs/index.php`, `htdocs/admin/`, `htdocs/assets/` ...), including `admin/config.php`.
+The project has about 3,000 files (≈ 60 MB). InfinityFree's web File Manager only takes files up
+to 10 MB, so upload with **FileZilla** (free FTP program, https://filezilla-project.org):
+
+1. Control Panel > **FTP Details**: note *FTP Hostname*, *FTP Username*, *FTP Password* (port 21).
+2. In FileZilla fill in Host / Username / Password / Port 21 and click **Quickconnect**.
+3. On the right side open the **htdocs** folder and delete the default `index2.html` if it is there.
+4. On the left side open the project folder, select **everything inside it** and drag it into `htdocs`
+   (so you get `htdocs/index.php`, `htdocs/admin/`, `htdocs/assets/` ...). Include `admin/config.php`.
    You do not need `_backup_before_redesign/`, `problem this Projects/`, `.git/` or the `.md` files.
-   - Tip: zip the project, upload the zip, then use **Extract** in the File Manager.
+5. Wait until the transfer queue at the bottom is empty (can take 10-20 minutes).
 
 ## 5. Check it
 1. Open your site, e.g. `https://scrapms.infinityfreeapp.com` (new accounts can take a few minutes to start).
