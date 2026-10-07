@@ -4,6 +4,12 @@ An online marketplace where people can buy recycled scrap products, place orders
 
 The site is responsive and works like an app on phones (bottom tab bar, slide-up menus, installable to the home screen).
 
+## Links
+
+- **Website:** https://scrapms.rf.gd
+- **Admin:** https://scrapms.rf.gd/admin/
+- **GitHub:** https://github.com/vedang1610/Scrap-Management-System
+
 ## Features
 
 **Customers**
