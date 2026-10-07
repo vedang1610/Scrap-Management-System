@@ -114,7 +114,7 @@ user_start('profile', 'Profile', 'Member since ' . date('M Y', strtotime($u['dt'
         <?php } ?>
         <label class="dropzone" for="idProofImage">
           <span class="dz-thumb"><i class="fa-regular fa-image"></i></span>
-          <span class="dz-text"><strong><?php echo user_photo($u['idproof']) ? 'Change photo' : 'Add a photo'; ?></strong><span>Optional · PNG or JPG, max 1 MB · Click Save to apply</span></span>
+          <span class="dz-text"><strong><?php echo user_photo($u['idproof']) ? 'Change photo' : 'Add a photo'; ?></strong><span>Optional · PNG or JPG, max 5 MB · Click Save to apply</span></span>
           <input type="file" id="idProofImage" name="idProofImage" accept="image/png,image/jpeg">
         </label>
       </div>

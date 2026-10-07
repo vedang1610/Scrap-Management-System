@@ -64,7 +64,7 @@ if (isset($_POST['name']))
                     } else $failed++;
                 }
             }
-            if ($failed) redirect_to('products.php', "$msg $failed extra photo(s) could not be uploaded (PNG/JPG, max 1 MB).", 'error');
+            if ($failed) redirect_to('products.php', "$msg $failed extra photo(s) could not be uploaded (PNG/JPG, max 5 MB).", 'error');
             redirect_to('products.php', $msg);
         }
         $error = 'Could not save the product. Please try again.';
@@ -134,7 +134,7 @@ admin_start('products', $data ? 'Edit product' : 'Add product', $data ? e($data[
           <?php } ?>
           <label class="dropzone" for="photo">
             <span class="dz-thumb"><i class="fa-regular fa-image"></i></span>
-            <span class="dz-text"><strong>Tap to choose</strong><span>PNG or JPG, max 1 MB</span></span>
+            <span class="dz-text"><strong>Tap to choose</strong><span>PNG or JPG, max 5 MB</span></span>
             <input type="file" id="photo" name="photo" accept="image/png,image/jpeg" <?php echo $data ? '' : 'required'; ?>>
           </label>
         </div>

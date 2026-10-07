@@ -64,7 +64,7 @@ admin_start('category', $data ? 'Edit category' : 'Add category', $data ? e($dat
       <?php } ?>
       <label class="dropzone" for="photo">
         <span class="dz-thumb"><i class="fa-regular fa-image"></i></span>
-        <span class="dz-text"><strong>Tap to choose a photo</strong><span>PNG or JPG, max 1 MB</span></span>
+        <span class="dz-text"><strong>Tap to choose a photo</strong><span>PNG or JPG, max 5 MB</span></span>
         <input type="file" id="photo" name="photo" accept="image/png,image/jpeg" <?php echo $data ? '' : 'required'; ?>>
       </label>
     </div>

@@ -29,7 +29,7 @@ if (isset($_POST['upload']))
         }
     }
     if (!$added && !$failed) redirect_to($self, 'Choose at least one photo.', 'error');
-    redirect_to($self, "$added photo(s) added." . ($failed ? " $failed failed (PNG/JPG, max 1 MB)." : ''), $failed ? 'error' : 'success');
+    redirect_to($self, "$added photo(s) added." . ($failed ? " $failed failed (PNG/JPG, max 5 MB)." : ''), $failed ? 'error' : 'success');
 }
 
 $images = selectData("SELECT * FROM `product_images` WHERE product_id='$id' ORDER BY id DESC");

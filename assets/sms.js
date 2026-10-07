@@ -34,11 +34,11 @@
     function show(file) {
       if (!file) return;
       title.textContent = file.name;
-      note.textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB' + (file.size > 1000000 ? ' - too big, max 1 MB' : '');
+      note.textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB' + (file.size > 5242880 ? ' - too big, max 5 MB' : '');
       var reader = new FileReader();
       reader.onload = function (e) { thumb.innerHTML = '<img alt="" src="' + e.target.result + '">'; };
       reader.readAsDataURL(file);
-      zone.closest('.field').classList.toggle('is-invalid', file.size > 1000000);
+      zone.closest('.field').classList.toggle('is-invalid', file.size > 5242880);
     }
     input.addEventListener('change', function () { show(input.files[0]); });
     ['dragenter', 'dragover'].forEach(function (ev) {

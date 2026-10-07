@@ -24,3 +24,6 @@ Thumbs.db
 desktop.ini
 .DS_Store
 *.log
+
+# One-time live installer (has a secret key)
+_install_once.php

@@ -127,7 +127,7 @@ function getSizeById($id)
      return $arr;
 }
 
-function uploadFile($file, $attributeName, $path, $allowed_extension = [], $size = 1000000)
+function uploadFile($file, $attributeName, $path, $allowed_extension = [], $size = 5242880)
 { 
      try 
      {
@@ -165,7 +165,7 @@ function uploadFile($file, $attributeName, $path, $allowed_extension = [], $size
           else if (($file[$attributeName]["size"] > $size)) {
                $response = array(
                     "status" => "error",
-                    "message" => "Image size exceeds $size bytes"
+                    "message" => "Image is too big. Please choose a photo under " . round($size / 1048576) . " MB."
                );
           }    
           // Validate image file dimension
@@ -214,7 +214,7 @@ function uploadFile($file, $attributeName, $path, $allowed_extension = [], $size
      return $response;       
 }
 
-function uploadFile2($file,$index, $attributeName, $path, $allowed_extension = [], $size = 1000000)
+function uploadFile2($file,$index, $attributeName, $path, $allowed_extension = [], $size = 5242880)
 { 
      try 
      {
@@ -252,7 +252,7 @@ function uploadFile2($file,$index, $attributeName, $path, $allowed_extension = [
           else if (($file[$attributeName]["size"][$index] > $size)) {
                $response = array(
                     "status" => "error",
-                    "message" => "Image size exceeds $size bytes"
+                    "message" => "Image is too big. Please choose a photo under " . round($size / 1048576) . " MB."
                );
           }    
           // Validate image file dimension

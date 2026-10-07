@@ -89,7 +89,7 @@ $activePage = 'account';
                                    <label for="idProofImage">ID proof photo <span class="req">*</span></label>
                                    <label class="dropzone" for="idProofImage">
                                         <span class="dz-thumb"><i class="fa-regular fa-id-card"></i></span>
-                                        <span class="dz-text"><strong>Tap to upload your ID proof</strong><span>PNG or JPG, max 1 MB</span></span>
+                                        <span class="dz-text"><strong>Tap to upload your ID proof</strong><span>PNG or JPG, max 5 MB</span></span>
                                         <input type="file" id="idProofImage" name="idProofImage" accept="image/png,image/jpeg" required>
                                    </label>
                               </div>
@@ -153,32 +153,52 @@ $activePage = 'account';
 <?php
 if(isset($_POST['txtName']))
 {
-    if(isset($_FILES['idProofImage']['name']))
-    {
+     // Check everything first, so a clear message is shown and no photo is uploaded for nothing
+     $nameRaw  = trim($_POST['txtName']);
+     $phoneRaw = trim($_POST['txtPhone']);
+     $emailRaw = trim($_POST['txtEmail']);
+     $password = $_POST['txtPassword'];
+     $passwordC = $_POST['txtPasswordC'];
+     $error = '';
+     if ($nameRaw === '' || trim($_POST['txtAddress']) === '' || $_POST['txtQuestion'] === '' || trim($_POST['txtAnswer']) === '')
+          $error = 'Please fill in all the fields.';
+     elseif (!preg_match('/^[1-9][0-9]{9}$/', $phoneRaw))
+          $error = 'Phone number must be 10 digits.';
+     elseif (!filter_var($emailRaw, FILTER_VALIDATE_EMAIL))
+          $error = 'Please enter a valid email address.';
+     elseif (!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $password))
+          $error = 'Password needs 8+ characters with an uppercase letter, a lowercase letter and a number.';
+     elseif ($password !== $passwordC)
+          $error = 'Password and Confirm Password should be same.';
+     elseif (count(selectData("SELECT id FROM users WHERE email='" . mysqli_real_escape_string($con, $emailRaw) . "'")))
+          $error = 'This email is already registered. Please login or use another email.';
+     elseif (!isset($_FILES['idProofImage']) || $_FILES['idProofImage']['error'] == UPLOAD_ERR_NO_FILE)
+          $error = 'Please choose your ID proof photo.';
+     elseif ($_FILES['idProofImage']['error'] == UPLOAD_ERR_INI_SIZE || $_FILES['idProofImage']['error'] == UPLOAD_ERR_FORM_SIZE)
+          $error = 'The photo is too big. Please choose a photo under 5 MB.';
+
+     if ($error)
+     {
+          runJavascript('swal("Registration failed", ' . json_encode($error) . ', "error")');
+     }
+     else
+     {
 	   $uploadResult = uploadFile($_FILES,"idProofImage","admin/upload_images/", array("png","jpg","jpeg") );
 
 	   if($uploadResult['status'] == 'success')
 	   {
-			$name = mysqli_real_escape_string($con, trim($_REQUEST['txtName']));
-			$phone = mysqli_real_escape_string($con, trim($_REQUEST['txtPhone']));
-			$email = mysqli_real_escape_string($con, trim($_REQUEST['txtEmail']));
-			$password = $_REQUEST['txtPassword'];
-               $passwordC = $_REQUEST['txtPasswordC'];
-			$address = mysqli_real_escape_string($con, trim($_REQUEST['txtAddress']));
-               $question = mysqli_real_escape_string($con, $_REQUEST['txtQuestion']);
-               $answer = mysqli_real_escape_string($con, trim($_REQUEST['txtAnswer']));
+			$name = mysqli_real_escape_string($con, $nameRaw);
+			$phone = mysqli_real_escape_string($con, $phoneRaw);
+			$email = mysqli_real_escape_string($con, $emailRaw);
+			$pass = mysqli_real_escape_string($con, $password);
+			$address = mysqli_real_escape_string($con, trim($_POST['txtAddress']));
+               $question = mysqli_real_escape_string($con, $_POST['txtQuestion']);
+               $answer = mysqli_real_escape_string($con, trim($_POST['txtAnswer']));
 			$status = 1;
-			$idproof = $uploadResult['image'];
-
-               if($password != $passwordC)
-               {
-                    runJavascript('swal("Password and Confirm Password should be same.", "", "error")');
-                    exit;
-               }
-               $password = mysqli_real_escape_string($con, $password);
+			$idproof = mysqli_real_escape_string($con, $uploadResult['image']);
 
 			$sql = "INSERT INTO `users`(`name`,`email`, `pass`, `phone`,`address`, `idproof`, `status`,`question`, `answer`)
-				VALUES ('$name','$email','$password','$phone','$address','$idproof','$status','$question','$answer')";
+				VALUES ('$name','$email','$pass','$phone','$address','$idproof','$status','$question','$answer')";
 			if(insert_update_delete_data($sql) == true)
 			{
                     $msg = getSwalMessgage("You're Registered Successfully, please Login.","",'window.location = "admin/userLogin.php"','window.location = "admin/userLogin.php"',"success");
@@ -186,16 +206,14 @@ if(isset($_POST['txtName']))
 			}
 			else
 			{
-				runJavascript('swal("Error !!!.", "", "error")');
+				runJavascript('swal("Registration failed", "Could not create the account. Please try again.", "error")');
 			}
 	   }
 	   else
 	   {
-               $why = isset($uploadResult['message']) ? addslashes($uploadResult['message']) : '';
-               runJavascript('swal("Image upload failed", "' . $why . '", "error")');
+               runJavascript('swal("Image upload failed", ' . json_encode($uploadResult['message']) . ', "error")');
 	   }
-    }
-
-  }
+     }
+}
 
 ?>
