@@ -183,7 +183,7 @@ $activePage = 'cart';
 
     <?php include('ui/footer.php'); ?>
 
-    <script src="assets/sms.js"></script>
+    <script src="assets/sms.js?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/sms.js'); ?>"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     (function () {

@@ -105,6 +105,6 @@ $activePage = 'scrap';
 
   <?php include('ui/footer.php'); ?>
 
-  <script src="assets/sms.js"></script>
+  <script src="assets/sms.js?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/sms.js'); ?>"></script>
 </body>
 </html>

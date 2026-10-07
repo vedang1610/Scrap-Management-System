@@ -100,8 +100,8 @@ function admin_start($active, $title, $subtitle = '', $actions = '', $back = '')
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="../assets/sms.css">
-  <link rel="stylesheet" href="../assets/admin.css">
+  <link rel="stylesheet" href="../assets/sms.css?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/sms.css'); ?>">
+  <link rel="stylesheet" href="../assets/admin.css?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/admin.css'); ?>">
 </head>
 <body class="sms admin">
 
@@ -170,8 +170,8 @@ function admin_end($extraScripts = '')
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../assets/sms.js"></script>
-<script src="../assets/admin.js"></script>
+<script src="../assets/sms.js?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/sms.js'); ?>"></script>
+<script src="../assets/admin.js?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/admin.js'); ?>"></script>
 <?php if ($flash) { ?>
 <script>adminToast(<?php echo json_encode($flash['message']); ?>, <?php echo json_encode($flash['type']); ?>);</script>
 <?php } ?>

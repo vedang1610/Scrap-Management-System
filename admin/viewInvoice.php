@@ -30,8 +30,8 @@ $back = $isAdmin ? 'adminOrderDetails.php?id=' . $invoiceId : 'userOrderDetails.
   <link rel="icon" type="image/png" href="../images/logo-mark.png">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="../assets/sms.css">
-  <link rel="stylesheet" href="../assets/admin.css">
+  <link rel="stylesheet" href="../assets/sms.css?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/sms.css'); ?>">
+  <link rel="stylesheet" href="../assets/admin.css?v=<?php echo @filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/admin.css'); ?>">
   <style>
     body.sms.admin { padding-bottom: 0; }
     .inv-bar { position: sticky; top: 0; z-index: 10; display: flex; gap: 10px; align-items: center; padding: 12px 16px;
