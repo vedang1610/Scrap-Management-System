@@ -173,7 +173,7 @@
         '<li><i class="fa-solid fa-ban"></i><span>Do not make any real payment or enter real card details.</span></li>' +
         '<li><i class="fa-solid fa-ban"></i><span>Do not upload real ID documents.</span></li>' +
       '</ul>' +
-      '<p class="dn-gu">આ ફક્ત ડિપ્લોમા પ્રોજેક્ટની ડેમો વેબસાઇટ છે. અહીં કોઈ સાચો ઓર્ડર કે પેમેન્ટ કરશો નહીં.</p>' +
+      '<p class="dn-gu">આ ફક્ત ડેમો વેબસાઇટ છે. અહીં કોઈ સાચો ઓર્ડર કે પેમેન્ટ કરશો નહીં.</p>' +
       '<button type="button" class="btn btn-primary"><i class="fa-solid fa-check"></i> I understand / સમજી ગયો</button>' +
     '</div>';
   body.appendChild(box);
