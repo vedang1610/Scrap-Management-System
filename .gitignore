@@ -1,0 +1,26 @@
+# Server database login (copy admin/config.example.php to admin/config.php on the server)
+admin/config.php
+
+# Database exports with real personal data. Use database/nsp_scrap_demo.sql instead.
+database/nsp_scrap.sql
+database/nsp_scrap2.sql
+
+# Uploaded files (customer ID photos etc.). Only the demo product/category images are kept.
+admin/upload_images/*
+!admin/upload_images/.gitkeep
+!admin/upload_images/1650097309.png
+!admin/upload_images/1650097343.jpg
+!admin/upload_images/1650097328.png
+!admin/upload_images/1650097369.jpg
+!admin/upload_images/1650097328_625a7cb0b4d5e.png
+!admin/upload_images/1650097369_625a7cd994639.png
+
+# Local backups and notes
+_backup_before_redesign/
+problem this Projects/
+
+# OS / editor files
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log

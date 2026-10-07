@@ -1,0 +1,65 @@
+Online Tourism Website Database Schema
+
+admin
+{
+    id
+    name
+    email
+    password
+    dt
+}
+
+user
+{
+    id
+    name
+    email
+    password
+    phone
+    address
+    idproof_type
+    idproof
+    photo
+    dt
+}
+
+packages
+{
+    id
+    name
+    type 
+    location
+    price
+    features
+    details
+    image
+    status
+    dt
+}
+
+bookings
+{
+    id
+    user_id
+    package_id
+    comment
+    from_date
+    to_date
+    amount,
+    payment_type,
+    payment_status,
+    transaction_id,
+    status (confirmed, canceled by admin, canceled by user, pending)
+    dt
+}
+
+inquiry
+{
+    id
+    name
+    email
+    phone
+    details
+    dt
+    status
+}
