@@ -151,3 +151,38 @@
     });
   });
 })();
+
+// Demo notice: tell visitors this is a student project, before they use the site (once per visit)
+(function () {
+  var body = document.body;
+  if (body.classList.contains('admin') && !body.classList.contains('user-area')) return; // not in the admin panel
+  var KEY = 'smsDemoNoticeSeen';
+  try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+  var box = document.createElement('div');
+  box.className = 'demo-notice';
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.setAttribute('aria-labelledby', 'dnTitle');
+  box.innerHTML =
+    '<div class="dn-card">' +
+      '<div class="dn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>' +
+      '<h2 id="dnTitle">Demo website only</h2>' +
+      '<p>This is a <b>diploma student project</b> made for learning. It is not a real shop.</p>' +
+      '<ul>' +
+        '<li><i class="fa-solid fa-ban"></i><span>Do not place real orders. Nothing will be delivered.</span></li>' +
+        '<li><i class="fa-solid fa-ban"></i><span>Do not make any real payment or enter real card details.</span></li>' +
+        '<li><i class="fa-solid fa-ban"></i><span>Do not upload real ID documents.</span></li>' +
+      '</ul>' +
+      '<p class="dn-gu">આ ફક્ત ડિપ્લોમા પ્રોજેક્ટની ડેમો વેબસાઇટ છે. અહીં કોઈ સાચો ઓર્ડર કે પેમેન્ટ કરશો નહીં.</p>' +
+      '<button type="button" class="btn btn-primary"><i class="fa-solid fa-check"></i> I understand / સમજી ગયો</button>' +
+    '</div>';
+  body.appendChild(box);
+  body.classList.add('dn-open');
+  var btn = box.querySelector('button');
+  setTimeout(function () { btn.focus(); }, 50);
+  btn.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    box.remove();
+    body.classList.remove('dn-open');
+  });
+})();
