@@ -4,6 +4,7 @@
 $assetBase = isset($assetBase) ? $assetBase : '';
 ?>
 <meta charset="utf-8">
+<?php include(__DIR__ . '/theme.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="mobile-web-app-capable" content="yes">

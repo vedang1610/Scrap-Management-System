@@ -1,0 +1,1 @@
+<button type="button" class="icon-btn theme-btn" data-theme-toggle aria-label="Switch light / dark mode" title="Light / dark mode"><i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i></button>

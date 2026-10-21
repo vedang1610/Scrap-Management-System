@@ -50,6 +50,7 @@ function user_start($active, $title, $subtitle = '', $actions = '', $back = '')
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <?php include(__DIR__ . '/../../ui/theme.php'); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <meta name="mobile-web-app-capable" content="yes">
@@ -107,6 +108,7 @@ function user_start($active, $title, $subtitle = '', $actions = '', $back = '')
       <?php if ($subtitle) { ?><p><?php echo $subtitle; ?></p><?php } ?>
     </div>
     <div class="abar-actions"><?php echo $actions; ?></div>
+    <?php include(__DIR__ . '/../../ui/theme-button.php'); ?>
     <a href="../cart.php" class="icon-btn" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><?php if ($cartCount) { ?><span class="badge-count"><?php echo $cartCount; ?></span><?php } ?></a>
     <a href="userProfile.php" class="abar-avatar" aria-label="My profile"><?php echo user_avatar(); ?></a>
   </header>

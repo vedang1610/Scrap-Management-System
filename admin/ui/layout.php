@@ -88,6 +88,7 @@ function admin_start($active, $title, $subtitle = '', $actions = '', $back = '')
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <?php include(__DIR__ . '/../../ui/theme.php'); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0f172a">
   <meta name="mobile-web-app-capable" content="yes">
@@ -137,6 +138,7 @@ function admin_start($active, $title, $subtitle = '', $actions = '', $back = '')
       <?php if ($subtitle) { ?><p><?php echo $subtitle; ?></p><?php } ?>
     </div>
     <div class="abar-actions"><?php echo $actions; ?></div>
+    <?php include(__DIR__ . '/../../ui/theme-button.php'); ?>
     <a href="adminProfile.php" class="avatar" title="<?php echo e($adminName . ' ' . $adminEmail); ?>"><?php echo e(initials($adminName)); ?></a>
   </header>
   <main class="content">

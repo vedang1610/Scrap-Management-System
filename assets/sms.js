@@ -150,6 +150,24 @@
       btn.innerHTML = btn.getAttribute('data-label') || 'Submit';
     });
   });
+
+  // Light / dark mode button (the starting theme is set in ui/theme.php)
+  var root = document.documentElement;
+  function paintThemeColor() {
+    var meta = document.querySelector('meta[name=theme-color]');
+    if (!meta) return;
+    if (!meta.hasAttribute('data-light')) meta.setAttribute('data-light', meta.content);
+    meta.content = root.getAttribute('data-theme') === 'dark' ? '#0b1220' : meta.getAttribute('data-light');
+  }
+  paintThemeColor();
+  document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('sms-theme', next); } catch (e) {}
+      paintThemeColor();
+    });
+  });
 })();
 
 // Demo notice: tell visitors this is a student project, before they use the site (once per visit)

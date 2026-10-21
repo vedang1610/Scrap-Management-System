@@ -36,6 +36,7 @@ $navLinks = array(
     </nav>
 
     <div class="top-actions">
+      <?php include(__DIR__ . '/theme-button.php'); ?>
       <a href="cart.php" class="icon-btn" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><?php echo $cartBadge; ?></a>
       <?php if ($loggedIn) { ?>
         <a href="admin/userDashboard.php" class="btn btn-primary btn-sm"><?php echo $userPhoto ? '<img class="btn-avatar" src="' . $userPhoto . '" alt="">' : '<i class="fa-regular fa-user"></i>'; ?> My Account</a>

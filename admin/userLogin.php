@@ -21,6 +21,7 @@
   <section class="auth-visual">
     <div class="auth-top">
       <a href="../index.php" class="back" aria-label="Back to website"><i class="fa-solid fa-arrow-left"></i></a>
+      <?php include('../ui/theme-button.php'); ?>
       <a href="../index.php" class="auth-logo"><img src="../images/logo1.png" alt="Scrap Management System"></a>
     </div>
     <h1>Turn scrap into cash</h1>
