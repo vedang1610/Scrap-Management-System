@@ -110,6 +110,8 @@
       btn.addEventListener('click', function () {
         var src = btn.getAttribute('data-src');
         img.src = src; main.href = src;
+        var bg = main.querySelector('.pd-bg');
+        if (bg) bg.style.backgroundImage = "url('" + encodeURI(src) + "')";
         g.querySelectorAll('.pd-thumbs button').forEach(function (b) { b.classList.remove('is-active'); });
         btn.classList.add('is-active');
       });

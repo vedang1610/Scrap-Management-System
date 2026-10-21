@@ -51,6 +51,7 @@ $showTabbar = false;
     <div class="pd-grid">
       <div class="pd-gallery">
         <a class="pd-main" href="admin/upload_images/<?php echo e($images[0]); ?>" data-lightbox>
+          <span class="pd-bg" style="background-image: url('admin/upload_images/<?php echo e(rawurlencode($images[0])); ?>')"></span>
           <img src="admin/upload_images/<?php echo e($images[0]); ?>" alt="<?php echo e($productsData['name']); ?>">
         </a>
         <?php if (count($images) > 1) { ?>
