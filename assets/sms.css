@@ -618,9 +618,15 @@ body.sms.auth { background: var(--card); }
 .pd-main .pd-bg {
   position: absolute; inset: -40px; z-index: -1;
   background: center / cover no-repeat;
-  filter: blur(28px) saturate(1.2); opacity: .55;
+  filter: blur(48px) saturate(1.3); opacity: .35;
 }
-.pd-main img { position: relative; width: 100%; height: 100%; object-fit: contain; transition: transform .3s; }
+/* the photo floats in the middle with a soft shadow that follows its own shape */
+.pd-main img {
+  position: relative; width: 100%; height: 100%; object-fit: contain; padding: clamp(14px, 4%, 28px);
+  filter: drop-shadow(0 10px 24px rgba(15, 23, 42, .16)); transition: transform .3s;
+}
+[data-theme="dark"] .pd-main .pd-bg { opacity: .3; }
+[data-theme="dark"] .pd-main img { filter: drop-shadow(0 10px 28px rgba(0, 0, 0, .5)); }
 .pd-main::after {
   content: "\f00e"; font: 900 14px "Font Awesome 6 Free"; position: absolute; right: 12px; bottom: 12px;
   width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
